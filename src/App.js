@@ -1,25 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
+import './assets/styles/global.css'
 
-function App() {
+import Authorisation from './components/pages/authorisationPage';
+import Registration from './components/pages/registrationPage';
+import Account from './components/pages/profilePage';
+import Header from './components/layout/Header';
+
+
+
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <ConditionalHeader />
+        <Routes>
+          <Route path="/login" element={<Authorisation />} />
+          <Route path="/register" element={<Registration />} />
+          <Route path='/profile' element={<Account/>}/>
+        </Routes>
+
+    </Router>
   );
 }
+const ConditionalHeader = () => {
+  const location = useLocation();
+  const showHeaderPaths = ['/profile']; // Пути, для которых нужно отображать Header
+
+  return showHeaderPaths.includes(location.pathname) ? <Header /> : null;
+};
+
 
 export default App;

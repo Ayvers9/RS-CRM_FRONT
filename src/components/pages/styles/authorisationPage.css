@@ -1,0 +1,19 @@
+.password-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.error-message{
+    color: white;
+}
+
+.authorisationWindow div{
+    display: flex;
+    justify-content: center;
+    color: rgb(245, 90, 90);
+    margin-top: 10px;
+
+    width: 100%;
+}

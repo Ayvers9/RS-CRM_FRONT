@@ -1,0 +1,56 @@
+/* src/assets/styles/global.css */
+
+/* Сброс стилей браузера */
+* {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+/* Общие стили для HTML и body */
+html, body {
+    height: 100%;
+    font-family: 'Arial', sans-serif;
+    background-color: rgb(43,43,43);
+    color: #333;
+}
+
+/* Стили заголовков */
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    font-weight: 600;
+    color: #444;
+}
+
+/* Стили ссылок */
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Стили контейнера */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Стили для кнопок */
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
