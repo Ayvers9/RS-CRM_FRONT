@@ -14,11 +14,11 @@ const App = () => {
   return (
     <Router>
       <ConditionalHeader />
-        <Routes>
-          <Route path="/login" element={<Authorisation />} />
-          <Route path="/register" element={<Registration />} />
-          <Route path='/profile' element={<Account/>}/>
-        </Routes>
+          <Routes>
+            <Route path="/login" element={<Authorisation />} />
+            <Route path="/register" element={<Registration />} />
+            <Route path='/profile' element={<Account/>}/>
+          </Routes>
 
     </Router>
   );
@@ -29,6 +29,7 @@ const ConditionalHeader = () => {
 
   return showHeaderPaths.includes(location.pathname) ? <Header /> : null;
 };
+
 
 
 export default App;
