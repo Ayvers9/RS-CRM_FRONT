@@ -1,3 +1,8 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
 .globalspace{
     width: 100vw;
     height: 100vh;
@@ -28,7 +33,9 @@
 
     overflow: hidden;
 }
-.leftPart div, .rightPart div{
+.leftPartContainer, .rightPartContainer{
+    position: relative;
+
     box-sizing: border-box;
     display: flex;
     flex-wrap: wrap;
@@ -38,12 +45,11 @@
     background-color: bisque;
 
     padding: 10%;
+
+    
 }
 /* ==========================PHOTO FORM==================== */
 
-/* .photoForm{
-
-} */
 
 
 
