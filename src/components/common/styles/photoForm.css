@@ -1,6 +1,7 @@
 /* photoFormStyle.css */
 .photoFormContainer {
-    background-color: black;
+    align-items: center;
+    overflow-y: hidden;
     padding: 0 !important;
     margin: 0;
     width: 100%;
@@ -12,24 +13,39 @@
     overflow-y: hidden;
     flex-direction: column;
     align-items: center;
+    background-color: rgba(0,0,0,0);
 
     padding: 0;
-    border: 0px;
+    border: 4px solid rgb(255, 255, 255);
+    border-radius: 10px;
 
-    width: 100%;
-    height: 100%;
+    width: 70%;
+    height: 95%;
     
 }
 
 .photoPreview {
     cursor: pointer;
-    width: 100px; /* Установите размер по вашему желанию */
-    height: 100px; /* Установите размер по вашему желанию */
+    width: 300px; /* Установите размер по вашему желанию */
+    height: 300px; /* Установите размер по вашему желанию */
     object-fit: cover; /* Обеспечивает, чтобы изображение заполняло контейнер */
 }
 
 .photoFormBtn {
+    overflow-y: hidden;
     padding: 5px 10px;
+    font-size: 16px;
+    background-color: #991515;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 30%;
+    height: 70%;
+}
+
+.photoFormBtn:hover {
+    background-color: #d14040;
 }
 
 
@@ -39,27 +55,31 @@
     justify-items: center;
     align-items: center;
     justify-content: center;
+
+    height: 85%;
+    width: 60%;
+
 }
 .imageContainer {
     overflow-y: hidden;
-    width: 300px;
-    height: 300px;
+    width: 250px;
+    height: 250px;
     display: flex;
     justify-content: center;
     align-items: center;
-}
 
-.photoInput img{
-    padding-top: 20%;
-    width: 300px;
-    height: 300px;
 }
 
 .messages {
     display: flex;
+    background-color: rgb(43, 43, 43);
     flex-direction: column;
+    justify-content: center;
     align-items: center;
-    margin-top: 10px;
+    width: 100%;
+    height: 15%;
+
+    border-top: 3px solid rgb(179, 179, 179);
 }
 
 .successfulMessage {
@@ -70,7 +90,16 @@
     animation: fadeOut 2s forwards; /* Плавное исчезновение */
 }
 
+.serverDataH4{
+    animation: fadeIn 1s;
+}
+
 @keyframes fadeOut {
     0% { opacity: 1; }
     100% { opacity: 0; }
+}
+
+@keyframes fadeIn {
+    0%{ opacity: 0;}
+    100%{opacity: 1;}
 }

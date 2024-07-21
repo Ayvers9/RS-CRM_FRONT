@@ -27,7 +27,7 @@ const Authorisation = () => {
         e.preventDefault();
         console.log("Submitting form data: ", formData);
         try {
-            const response = await api.post("/users/login", formData, {withCredentials: true}) // Позволяет отправлять куки с запросами});
+            const response = await api.post("/users/login", formData, {withCredentials: true}) // Позволяет отправлять куки с запросами;
             console.log('User was authorised successfully', response.data);
 
             if(response.data.message === 'Login successful'){
@@ -56,22 +56,25 @@ const Authorisation = () => {
 
     // draw the form and set parameters
     return (
-        <div className='authorisationWindow'>
-            <form onSubmit={handleSubmit}>
-            
-            <input type="email" name="email" placeholder="Email" onChange={handleChange} />
-            <div className='password-container'>
-                <input id='passwordField' type={inputType} name="password" placeholder="Password" onChange={handleChange} />
-                <button className='formBtn' id='ShowBtn' type='button' onClick={togglePasswordVisibility}>
-                    {inputType === 'password' ? 'Показать' : 'Скрыть'}
-                </button>
-            </div>
-            <button className='formBtn' id='authorise' type="submit">Войти</button>
-            </form>
-            <div>
-                {errorMessage && <div className="error-message">{errorMessage}</div>}
+        <div className='authorisationContainer'>
+            <div className='authorisationWindow'>
+                <form onSubmit={handleSubmit}>
+                
+                <input type="email" name="email" placeholder="Email" onChange={handleChange} />
+                <div className='password-container'>
+                    <input id='passwordField' type={inputType} name="password" placeholder="Password" onChange={handleChange} />
+                    <button className='formBtn' id='ShowBtn' type='button' onClick={togglePasswordVisibility}>
+                        {inputType === 'password' ? 'Показать' : 'Скрыть'}
+                    </button>
+                </div>
+                <button className='formBtn' id='authorise' type="submit">Войти</button>
+                </form>
+                <div>
+                    {errorMessage && <div className="error-message">{errorMessage}</div>}
+                </div>
             </div>
         </div>
+        
         
     );
 };

@@ -1,49 +1,53 @@
-import React, {useState, useEffect, useRef} from "react";
+import React, { useState, useEffect, useRef } from "react";
 import api from "../../services/api";
+import "../common/styles/photoForm.css"
 import placeholderImage from "../../assets/images/img-placeholder.png";
 
-const PhotoUpload = () => {
-    //photo & preview
+const PhotoUpload = ({ serverData }) => {
+    // photo & preview
     const [selectFile, setSelectFile] = useState(null);
     const [preview, setPreview] = useState(null);
     // complete upload
     const [isUploadBtnVisible, setUploadBtnVisible] = useState(false)
+    const [isServerDataVisible, setServerDataVisible] = useState(true)
     const [isLoading, setLoading] = useState(false)
     const [successMessage, setSuccessMessage] = useState(false)
     const fileInputRef = useRef(null)
 
     // load image from localStorage
-    useEffect(()=>{
+    useEffect(() => {
+        // БРАТЬ КАРТИНКИ ИЗ ХРАНИЛИЩА НА СЕРВЕРЕ, А НЕ В ЛОКАЛЬНОМ ХРАНИЛИЩЕ
         const savedImage = localStorage.getItem("uploadedImage");
         // localStorage.clear() // to clear all images from localStorage
-        if(savedImage){
+        if (savedImage) {
             setPreview(savedImage);
-        }
-        else{
-            setPreview(placeholderImage)
+        } else {
+            setPreview(placeholderImage);
         }
     }, []);
 
     // For update state of image form
     const handleFileChange = (event) => {
-        const file= event.target.files[0];
-        if (file){
+        const file = event.target.files[0];
+        if (file) {
             const previewURL = URL.createObjectURL(file);
             setSelectFile(file);
             setPreview(previewURL);
+
             localStorage.setItem("uploadedImage", previewURL);
-            setUploadBtnVisible(true)
+            setServerDataVisible(false)
+            setUploadBtnVisible(true);
         }
     };
 
     // upload confirm
-    const handleSubmit = async(event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
         setLoading(true)
         const formData = new FormData();
         formData.append('photo', selectFile);
 
-        try{
+        try {
             const response = await api.post('/upload', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
@@ -53,21 +57,23 @@ const PhotoUpload = () => {
             // Set loading to false and show success message after a delay
             setTimeout(() => {
                 setLoading(false);
+                setServerDataVisible(false)
                 setSuccessMessage(true);
-                
 
                 // Hide success message after a delay
                 setTimeout(() => {
                     setSuccessMessage(false);
+                    setServerDataVisible(true)
                 }, 2000);
             }, 2000); // Delay to simulate loading time
             setUploadBtnVisible(false);
-        }catch(error){
-            console.error('Error uploading file:', error)
+            setServerDataVisible(true)
+        } catch (error) {
+            console.error('Error uploading file:', error);
             setLoading(false);
         }
     };
-    
+
     // draw form
     return (
         <div className="photoFormContainer">
@@ -99,6 +105,7 @@ const PhotoUpload = () => {
                     {successMessage && (
                         <h2 className="successfulMessage">Successful!</h2>
                     )}
+                    {isServerDataVisible && serverData && <h4 className="serverDataH4">{serverData}</h4>}
                 </div>
             </form>
         </div>
