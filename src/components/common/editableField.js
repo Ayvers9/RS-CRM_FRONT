@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import '../common/styles/editableFieldStyle.css'
 
-const EditableField = ({ label, value, onSave }) => {
+const EditableField = ({ id, label, value, onSave }) => {
     const [isEditing, setIsEditing] = useState(false);
     const [inputValue, setInputValue] = useState(value);
 
@@ -20,15 +20,15 @@ const EditableField = ({ label, value, onSave }) => {
 
     return (
         <div className="editableField">
-            <label>{label}</label>
+            <label htmlFor={id}>{label}</label>
             {isEditing ? (
                 <div>
-                    <input type="text" value={inputValue} onChange={handleInputChange} />
+                    <input id={id} type="text" value={inputValue} onChange={handleInputChange} />
                     <button onClick={handleSaveClick}>Save</button>
                 </div>
             ) : (
                 <div>
-                    <h3>{value}</h3>
+                    <h3 id={`${id}-display`}>{value}</h3>
                     <button onClick={handleEditClick}>Edit</button>
                 </div>
             )}

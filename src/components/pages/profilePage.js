@@ -1,48 +1,23 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import api from '../../services/api';
+import React, { useEffect, useContext } from 'react';
+import { AuthContext } from '../../context/AuthContext';
 import "./styles/profileStyle.css"
 
 import PhotoUpload from '../common/photoUpload'
 import EditableField from '../common/editableField';
 
+import {
+    handleSave
+} from './handlers/profileHandlers'
+
 const Profile = () => {
-    const [userData, setUserData] = useState(null);
-    const [errorMessage, setErrorMessage] = useState('');
-    const navigate = useNavigate(); 
-    
+    const {userData, setUserData, errorMessage} = useContext(AuthContext);
+
     useEffect(() => {
-        const fetchUserData = async () => {
-            try {
-                const response = await api.get('/authenticateUser', { withCredentials: true });
-                if (response.data.message === 'Authentication successful!') {
-                    const userDataResponse = await api.get(`/users/${response.data.user_id}`);
-                    setUserData(userDataResponse.data);
-                } else {
-                    console.log(response.data.message);
-                    setErrorMessage(response.data.message || 'Failed to authenticate user');
-                    alert(errorMessage)
-                    navigate('/login');
-                }    
-            } catch (error) {
-                console.error('Error fetching user data:', error);
-                setErrorMessage(error.response?.data?.message || 'Failed to authenticate user');
-                navigate('/login');
-            }
-        };
-        fetchUserData();
-    });
-
-    const handleSave = async (field, value) => {
-        try {
-            const updatedData = { ...userData, [field]: value };
-            await api.put(`/users/${userData.user_id}`, updatedData);
-            setUserData(updatedData);
-
-        } catch (error) {
-            console.error('Error updating user data:', error);
+        // If troubles with authenticate
+        if (errorMessage) {
+            alert(errorMessage);  
         }
-    };
+    }, [errorMessage]);
 
     return (
         <div className='globalspace'>
@@ -55,29 +30,34 @@ const Profile = () => {
                                 <div className='leftInfoContainer'>
                                     <div className='LeftInfo'>
                                         <EditableField
+                                            id="email"
                                             label="Email:"
                                             value={userData.email}
-                                            onSave={(value) => handleSave('email', value)}
+                                            onSave={(value) => handleSave('email', value, userData, setUserData)}
                                         />
-                                        <EditableField 
+                                        <EditableField
+                                            id="hiredate" 
                                             label="Работает с:"
                                             value={userData.hiredate}
-                                            onSave={(value) => handleSave('hiredate', value)}
+                                            onSave={(value) => handleSave('hiredate', value, userData, setUserData)}
                                         />
                                         <EditableField
+                                            id="passport"
                                             label="Паспорт:"
                                             value={userData.pasport_data}
-                                            onSave={(value) => handleSave('pasport_data', value)}
+                                            onSave={(value) => handleSave('pasport_data', value, userData, setUserData)}
                                         />
                                         <EditableField
+                                            id="phone"
                                             label="Телефон:"
                                             value={userData.phone}
-                                            onSave={(value) => handleSave('phone', value)}
+                                            onSave={(value) => handleSave('phone', value, userData, setUserData)}
                                         />
                                         <EditableField
+                                            id="salary"
                                             label="Зарплата:"
                                             value={userData.salary}
-                                            onSave={(value) => handleSave('salary', value)}
+                                            onSave={(value) => handleSave('salary', value, userData, setUserData)}
                                         />
                                     </div>
                                 </div>
