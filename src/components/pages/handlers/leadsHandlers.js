@@ -1,4 +1,6 @@
 import { deleteLead, saveNewLead, updateLead, getLeads } from '../../../services/leadsServices';
+import { saveNewClient } from '../../../services/clientsServices';
+import { format } from 'date-fns';
 
 //getting all leads from DB to draw them on web-site
 export const fetchLeads = async (setLeads) => {
@@ -11,7 +13,7 @@ export const fetchLeads = async (setLeads) => {
 };
 
 
-// LEADS HANDLER ================================
+//  ================================ LEADS HANDLER
 
 //delete lead
 export const handleDeleteLead = async (id, leads, setLeads) => {
@@ -65,7 +67,7 @@ export const handleCancelNewLead = (setIsAdding, resetNewLead) => {
     resetNewLead();
 };
 
-// TABLE HANDLERS ================================================================
+//  ================================================================ TABLE HANDLERS
 
 // set editing field
 export const handleEditClick = (id, field, setEditingField) => {
@@ -78,22 +80,41 @@ export const handleInputChange = (e, id, field, leads, setLeads) => {
     setLeads(leads.map(lead => (lead.lead_id === id ? { ...lead, [field]: value } : lead)));
 };
 
-// CLIENT HANDLERS ================================================================
+//  ================================================================ CLIENT HANDLERS
 
-export const handleCreateClient = (leadId) => {
-    console.log(`Creating client for lead ID: ${leadId}`);
+
+export const handleClientChange = (e, setClientData) => {
+    const { name, value } = e.target;
+    setClientData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
+  export const handleClientSubmit = async (e, clientData, closePortal, lead_id, setLeads) => {
+    e.preventDefault();
+    try {
+        await saveNewClient(clientData);
+        console.log('Client data saved:', clientData);
+        await deleteLead(lead_id)
+        await fetchLeads(setLeads)
+        closePortal();
+    } catch (error) {
+        console.error('Error saving client data:', error);
+    }
 };
 
-// EDIT DATE HANDLERS ================================================================
+//  ================================================================ EDIT DATE HANDLERS
 
 export const handleDateChange = (date, id, field, leads, setLeads) => {
-    setLeads(leads.map(lead => (lead.lead_id === id ? { ...lead, [field]: date } : lead)));
+    const formattedDate = format(date, 'yyyy-MM-dd');
+    setLeads(leads.map(lead => (lead.lead_id === id ? { ...lead, [field]: formattedDate } : lead)));
 };
 
 export const handleNewDateChange = (date, setNewLead) => {
-    setNewLead(prev => ({ ...prev, trial_date: date }));
+    const formattedDate = format(date, 'yyyy-MM-dd');
+    setNewLead(prev => ({ ...prev, trial_date: formattedDate }));
 };
-
 
 
 export const resetNewLead = () => ({
