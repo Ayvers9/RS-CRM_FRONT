@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef  } from 'react';
 
-import CreateClientPortal from '../../portals/createClientPortal';
+import CreateClientPortal from '../../../portals/createClientPortal';
 
-import './styles/leads.css';
+import './leads.css';
 
 import {
     fetchLeads,
@@ -20,7 +20,7 @@ import {
     handleDeleteLead,
     handleAddLead,
     
-} from './handlers/leadsHandlers';
+} from './leadsHandlers';
 
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";

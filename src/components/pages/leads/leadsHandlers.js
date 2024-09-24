@@ -1,11 +1,11 @@
-import { deleteLead, saveNewLead, updateLead, getLeads } from '../../../services/leadsServices';
-import { saveNewClient } from '../../../services/clientsServices';
+import {fetchEntities, deleteEntity, saveNewEntity, updateEntity} from '../../../services/entitiesServices'
 import { format } from 'date-fns';
+
 
 //getting all leads from DB to draw them on web-site
 export const fetchLeads = async (setLeads) => {
     try {
-        const leads = await getLeads();
+        const leads = await fetchEntities('leads');
         setLeads(leads);
     } catch (error) {
         console.error('Error fetching leads:', error);
@@ -18,7 +18,7 @@ export const fetchLeads = async (setLeads) => {
 //delete lead
 export const handleDeleteLead = async (id, leads, setLeads) => {
     try {
-        const success = await deleteLead(id);
+        const success = await deleteEntity('leads', id);
         if(success) setLeads(leads.filter(lead => lead.lead_id !== id));
     } catch (error) {
         console.error('Error deleting lead:', error);
@@ -34,7 +34,7 @@ export const handleNewLeadChange = (e, newLead, setNewLead) => {
 // Save new lead
 export const handleSaveNewLead = async (newLead, leads, setLeads, setIsAdding, resetNewLead) => {
     try {
-        const createdLead = await saveNewLead(newLead);
+        const createdLead = await saveNewEntity('leads', newLead);
         setLeads([...leads, createdLead]);
         setIsAdding(false);
         resetNewLead();
@@ -47,7 +47,7 @@ export const handleSaveNewLead = async (newLead, leads, setLeads, setIsAdding, r
 export const handleSaveClick = async (id, field, leads, setEditingField) => {
     const lead = leads.find(lead => lead.lead_id === id);
     try {
-        const success = await updateLead(id, field, lead[field]);
+        const success = await updateEntity('leads', id, field, lead[field]);
         if (success) setEditingField({id: null, field: null});
     } catch (error) {
         console.error('Error updating lead:', error);
@@ -94,9 +94,9 @@ export const handleClientChange = (e, setClientData) => {
   export const handleClientSubmit = async (e, clientData, closePortal, lead_id, setLeads) => {
     e.preventDefault();
     try {
-        await saveNewClient(clientData);
+        await saveNewEntity('clients', clientData);
         console.log('Client data saved:', clientData);
-        await deleteLead(lead_id)
+        await deleteEntity('leads', lead_id)
         await fetchLeads(setLeads)
         closePortal();
     } catch (error) {
