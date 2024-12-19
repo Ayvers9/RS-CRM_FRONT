@@ -5,8 +5,7 @@ import Authorisation from './components/pages/authorisation/authorisationPage';
 import Registration from './components/pages/registration/registrationPage';
 import Account from './components/pages/profile/profilePage';
 import Leads from './components/pages/leads/leadsPage';
-import Students from './components/pages/students/studentsPage';
-import Payment from './components/pages/beta-test-payment/paymentPagebeta'
+// import Students from './components/pages/students/studentsPage';
 
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
@@ -24,8 +23,8 @@ const App = () => {
             <Route path="/register" element={<Registration />} />
             <Route path="/profile" element={<Account />} />
             <Route path="/leads" element={<Leads />} />
-            <Route path="/students" element={<Students/>}/>
-            <Route path="/payment" element={<Payment/>}/>
+            {/* <Route path="/students" element={<Students/>}/> */}
+            {/* <Route path="/payment" element={<Payment/>}/> */}
           </Route>
           
         </Routes>
