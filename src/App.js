@@ -1,6 +1,5 @@
 import React from 'react';
 import { Route, Routes, useLocation } from 'react-router-dom';
-import './assets/styles/global.css';
 
 import Authorisation from './components/pages/authorisation/authorisationPage';
 import Registration from './components/pages/registration/registrationPage';

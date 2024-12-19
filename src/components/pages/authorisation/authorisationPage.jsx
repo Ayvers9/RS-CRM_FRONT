@@ -1,8 +1,8 @@
 import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import api from '../../../services/api';
-import styles from './authorisationPage.module.css'; // Импорт CSS модуля
 import { AuthContext } from '../../../context/AuthContext';
+import styles from './authorisation.module.css'
 
 const Authorisation = () => {
     const [formData, setFormData] = useState({

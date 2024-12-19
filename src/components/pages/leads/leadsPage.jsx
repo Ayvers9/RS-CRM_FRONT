@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef  } from 'react';
 
 import CreateClientPortal from '../../../portals/createClientPortal';
 
-import './leads.css';
 
 import {
     fetchLeads,

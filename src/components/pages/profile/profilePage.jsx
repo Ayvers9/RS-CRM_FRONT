@@ -1,6 +1,5 @@
 import React, { useEffect, useContext } from 'react';
 import { AuthContext } from '../../../context/AuthContext';
-import "./profileStyle.css"
 
 import PhotoUpload from '../../common/photoUpload/photoUpload'
 import EditableField from '../../common/editableField/editableField';

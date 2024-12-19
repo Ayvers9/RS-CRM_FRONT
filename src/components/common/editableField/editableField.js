@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import './editableFieldStyle.css'
 
 const EditableField = ({ id, label, value, onSave }) => {
     const [isEditing, setIsEditing] = useState(false);

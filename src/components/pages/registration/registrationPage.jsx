@@ -1,8 +1,6 @@
 // src/components/pages/Register.js
 import React, { useState } from 'react';
 import api from '../../../services/api';
-import '../../../assets/styles/forms.css'
-import './registerPage.css'
 
 const Register = () => {
   const [formData, setFormData] = useState({

@@ -7,7 +7,7 @@ import { GroupProvider } from './context/GroupContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  // <React.StrictMode>
+  <React.StrictMode>
     <Router>
       <AuthProvider>
         <GroupProvider>
@@ -16,5 +16,5 @@ root.render(
 
       </AuthProvider>
     </Router>
-  // </React.StrictMode>
+   </React.StrictMode>
 );

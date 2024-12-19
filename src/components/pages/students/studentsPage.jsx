@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from "react";
 import StudentComponent from './Table/student/studentTD'
-import st from './studentsPage.module.css'
 
 import {
     fetchGroupsData

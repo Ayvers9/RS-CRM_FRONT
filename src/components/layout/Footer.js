@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { GroupContext } from '../../context/GroupContext';
-import './styles/footer.css'
+
 
 import {
     fetchGroupsData,

@@ -1,5 +1,4 @@
 import React from "react";
-import st from './paymentBeta.module.css'
 import PaymentBody from "./PaymentBody/paymentBody";
 
 

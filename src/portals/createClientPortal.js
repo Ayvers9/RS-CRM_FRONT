@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './styles/createClient.css'; // Добавьте стили для вашего портала
+
 
 const CreateClientPortal = ({ children, isOpen, onClose }) => {
     if (!isOpen) return null;

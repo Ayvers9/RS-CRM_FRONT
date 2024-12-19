@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import st from './paymentBody.module.css'
 
 import { fetchStudentsNames, fetchPaymentData } from './PaymentBetaHandlers' 
 
