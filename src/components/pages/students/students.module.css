@@ -1,0 +1,54 @@
+.students-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    max-width: 95%;
+    margin: 0 auto;
+    padding-top: 2%;
+    
+    height: auto;
+}
+
+.students-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.students-list {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.no-students-message {
+    font-size: 18px;
+    color: #888;
+    text-align: center;
+}
+
+.students-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.students-button:hover {
+    background-color: #0056b3;
+}
+
+.students-button:active {
+    background-color: #004494;
+}

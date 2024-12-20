@@ -5,11 +5,13 @@ import Authorisation from './components/pages/authorisation/authorisationPage';
 import Registration from './components/pages/registration/registrationPage';
 import Account from './components/pages/profile/profilePage';
 import Leads from './components/pages/leads/leadsPage';
-// import Students from './components/pages/students/studentsPage';
+import Students from './components/pages/students/students';
 
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
 import ProtectedRoute from './components/common/protectedRoute/protectedRoute';
+
+import '../src/styles/global.css'
 
 const App = () => {
   return (
@@ -23,7 +25,7 @@ const App = () => {
             <Route path="/register" element={<Registration />} />
             <Route path="/profile" element={<Account />} />
             <Route path="/leads" element={<Leads />} />
-            {/* <Route path="/students" element={<Students/>}/> */}
+            <Route path="/students" element={<Students/>}/>
             {/* <Route path="/payment" element={<Payment/>}/> */}
           </Route>
           
@@ -36,14 +38,14 @@ const App = () => {
 
 const ConditionalHeader = () => {
   const location = useLocation();
-  const showHeaderPaths = ['/profile', '/leads', '/students', '/payment'];
+  const showHeaderPaths = ['/profile', '/leads', '/payment'];
 
   return showHeaderPaths.includes(location.pathname) ? <Header /> : null;
 };
 
 const ConditionalFooter = () => {
   const location = useLocation();
-  const showHeaderPaths = ['/leads', '/students'];
+  const showHeaderPaths = ['/leads'];
 
   return showHeaderPaths.includes(location.pathname) ? <Footer /> : null;
 };

@@ -1,0 +1,13 @@
+* {margin: 0; padding: 0;}
+
+.appContainer{
+    height: 100%;
+}
+
+.mainContent{
+    height: 100%
+}
+
+#root{
+    height: 100vh;
+}
