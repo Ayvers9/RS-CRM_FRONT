@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useContext } from 'react';
 import { AuthContext } from '../../../context/AuthContext';
 
 import PhotoUpload from '../../common/photoUpload/photoUpload'
@@ -11,12 +11,12 @@ import {
 const Profile = () => {
     const {userData, setUserData, errorMessage} = useContext(AuthContext);
 
-    useEffect(() => {
-        // If troubles with authenticate
-        if (errorMessage) {
-            alert(errorMessage);  
-        }
-    }, [errorMessage]);
+    // useEffect(() => {
+    //     // If troubles with authenticate
+    //     if (errorMessage) {
+    //         alert(errorMessage);  
+    //     }
+    // }, [errorMessage]);
 
     return (
         <div className='globalspace'>
@@ -64,11 +64,6 @@ const Profile = () => {
                         ) : (
                             <p>Loading user data...</p>
                         )}
-                    </div>
-                </div>
-                <div className="rightPart">
-                    <div className='rightPartContainer'>
-                        DSADASDASDASDS
                     </div>
                 </div>
             </div>

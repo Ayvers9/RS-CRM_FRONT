@@ -1,0 +1,46 @@
+.lead-card {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 8px 16px;
+    margin: 8px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+    display: flex;
+    align-items: center; /* Центрирование элементов по вертикали */
+    justify-content: space-between; /* Распределение элементов */
+    gap: 16px; /* Расстояние между элементами */
+}
+
+.lead-card label {
+    font-weight: bold;
+    color: #333;
+    margin: 0;
+    display: flex;
+    flex-direction: column; /* Этикетка и текст в столбик */
+}
+
+.lead-card span {
+    font-weight: normal;
+    color: #555;
+}
+
+.lead-card button {
+    padding: 6px 12px;
+    background-color: #ff5757;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+    flex-shrink: 0; /* Кнопка не сжимается */
+}
+
+.lead-card button:hover {
+    background-color: #e63939;
+}
+
+.lead-card button:active {
+    background-color: #c93030;
+}

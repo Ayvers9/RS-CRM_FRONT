@@ -1,4 +1,4 @@
-.students-container {
+.leads-container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -13,27 +13,27 @@
     height: auto;
 }
 
-.students-title {
+.leads-title {
     font-size: 24px;
     font-weight: bold;
     color: #333;
     margin-bottom: 20px;
 }
 
-.students-list {
+.leads-list {
     width: 90%;
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
 
-.no-students-message {
+.no-leads-message {
     font-size: 18px;
     color: #888;
     text-align: center;
 }
 
-.students-button {
+.leads-button {
     margin-top: 20px;
     padding: 10px 20px;
     background-color: #007bff;
@@ -45,11 +45,11 @@
     transition: background-color 0.3s ease;
 }
 
-.students-button:hover {
+.leads-button:hover {
     background-color: #0056b3;
 }
 
-.students-button:active {
+.leads-button:active {
     background-color: #004494;
 }
 

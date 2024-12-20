@@ -1,17 +1,16 @@
 import {React, useState} from "react";
-import st from './addStudents.module.css'
+import st from './addLead.module.css'
 
 
 
-const AddStudentForm = ({ onAddStudent, onCancel }) => {
+const AddLeadsForm = ({ onAddLead, onCancel }) => {
     const [formData, setFormData] = useState({
-        client_id: "",
         group_id: "",
         second_name: "",
         first_name: "",
         phone: "",
-        birthdate: "",
-        hiredate: ""
+        qualification: "",
+        trial_date: ""
     });
 
     const handleChange = (e) => {
@@ -20,40 +19,29 @@ const AddStudentForm = ({ onAddStudent, onCancel }) => {
     };
 
     const handleSubmit = () => {
-        if (!formData.client_id ||
+        if (!formData.group_id ||
             !formData.second_name ||
-            !formData.group_id ||
             !formData.first_name ||
             !formData.phone ||
-            !formData.birthdate ||
-            !formData.hiredate
+            !formData.qualification ||
+            !formData.trial_date
         ) {
             alert("Пожалуйста, заполните все поля");
             return;
         }
-        onAddStudent(formData);
+        onAddLead(formData);
         setFormData({
-            client_id: "",
             group_id: "",
             second_name: "",
             first_name: "",
             phone: "",
-            birthdate: "",
-            hiredate: ""
+            qualification: "",
+            trial_date: ""
         })
     };
 
     return (
         <div className={st["form-container"]}>
-            <label>
-                Клиент:
-                <input
-                    type="text"
-                    name="client_id"
-                    value={formData.client_id}
-                    onChange={handleChange}
-                />
-            </label>
             <label>
                 Группа:
                 <input
@@ -91,20 +79,20 @@ const AddStudentForm = ({ onAddStudent, onCancel }) => {
                 />
             </label>
             <label>
-                Дата рождения:
+                Дата пробного:
                 <input
                     type="date"
-                    name="birthdate"
-                    value={formData.birthdate}
+                    name="qualification"
+                    value={formData.qualification}
                     onChange={handleChange}
                 />
             </label>
             <label>
-                Дата поступления:
+                Дата пробного:
                 <input
                     type="date"
-                    name="hiredate"
-                    value={formData.hiredate}
+                    name="trial_date"
+                    value={formData.trial_date}
                     onChange={handleChange}
                 />
             </label>
@@ -121,4 +109,4 @@ const AddStudentForm = ({ onAddStudent, onCancel }) => {
 
 
 
-export default AddStudentForm;
+export default AddLeadsForm;

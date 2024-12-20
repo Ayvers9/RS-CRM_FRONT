@@ -1,4 +1,4 @@
-import {fetchStudents, createStudent} from '../../../services/students.services'
+import {fetchStudents, createStudent, deleteStudent} from '../../../services/students.services'
 
 export const fetchStudentsData = async () => {
 
@@ -20,4 +20,15 @@ export const addStudents = async (stud_data) => {
     }catch(error){
         console.error(`Error creating student:`, error);
     }
+};
+
+export const deleteStudents = async (stud_id) => {
+
+    try{
+        await deleteStudent(stud_id);
+        return console.log(`Successful delete student with id ${stud_id}` )
+    }catch(error){
+        console.error(`Error deleting:`, error);
+    }
 }
+
